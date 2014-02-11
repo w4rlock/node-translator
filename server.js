@@ -1,7 +1,6 @@
 var express = require('express'),
     request = require('request'),
     cheerio = require('cheerio'),
-    param = require('express-params'),
     Ticketek = require('./concert.js').Ticketek,
     app = express(),
     Cache = require('cache-storage'),
