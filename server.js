@@ -7,6 +7,11 @@ var express = require('express'),
     FileStorage = require('cache-storage/Storage/FileSyncStorage'),
     server = require('http').createServer(app);
 
+app.use(express.logger());
+app.use(express.compress());
+app.use(express.methodOverride());
+app.use(express.bodyParser());
+
 var cache = new Cache(new FileStorage('./cache'), 'namespace');
 
 function cacheSave(key,value,expire){
