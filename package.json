@@ -1,16 +1,14 @@
 {
-  "name": "OpenShift-Sample-App",
+  "name": "Concerts-App",
   "version": "1.0.0",
-  "description": "OpenShift Sample Application",
+  "description": "Ticketeck rest api",
   "keywords": [
-    "OpenShift",
     "Node.js",
-    "application",
-    "openshift"
+    "application"
   ],
   "author": {
     "name": "OpenShift",
-    "email": "ramr@example.org",
+    "email": "asds",
     "url": "http://www.openshift.com/"
   },
   "homepage": "http://www.openshift.com/",
@@ -23,9 +21,12 @@
     "node": ">= 0.6.0",
     "npm": ">= 1.0.0"
   },
-
   "dependencies": {
-    "express": "~3.4.4"
+    "express": "~3.4.4",
+    "cache-storage": "~2.0.0",
+    "cheerio": "~0.13.1",
+    "request": "~2.33.0",
+    "async": "~0.2.10"
   },
   "devDependencies": {},
   "bundleDependencies": [],
