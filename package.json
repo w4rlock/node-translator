@@ -31,5 +31,5 @@
   "bundleDependencies": [],
 
   "private": true,
-  "main": "test.js"
+  "main": "server.js"
 }
