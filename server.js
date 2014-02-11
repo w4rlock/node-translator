@@ -59,5 +59,5 @@ app.get('/*', function(req, res){
 });
 //------------------------- ROUTES ------------------------------//
 
-server.listen(80);
+server.listen(8080, 127.0.0.1, null);
 console.log('Server listen on 8080');
