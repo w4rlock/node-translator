@@ -5,7 +5,6 @@ var express = require('express'),
     app = express(),
     Cache = require('cache-storage'),
     FileStorage = require('cache-storage/Storage/FileSyncStorage'),
-    server = require('http').createServer(app);
 
 app.use(express.logger());
 app.use(express.compress());
@@ -59,5 +58,8 @@ app.get('/*', function(req, res){
 });
 //------------------------- ROUTES ------------------------------//
 
-server.listen(8081, '127.0.0.1', null);
+var port = process.env.PORT || 5000;
+app.listen(port, function() {
+  console.log("Listening on " + port);
+});
 console.log('Server listen on 8080');
