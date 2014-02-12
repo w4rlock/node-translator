@@ -4,7 +4,8 @@ var express = require('express'),
     Ticketek = require('./concert.js').Ticketek,
     app = express(),
     Cache = require('cache-storage'),
-    FileStorage = require('cache-storage/Storage/FileSyncStorage')
+    //FileStorage = require('cache-storage/Storage/FileSyncStorage')
+    FileStorage = require('cache-storage/Storage/MemorySyncStorage')
 
 app.use(express.logger());
 app.use(express.compress());
