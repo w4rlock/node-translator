@@ -24,21 +24,38 @@ function cacheGet(key){
   return cache.load(key.toUpperCase());
 }
 
+function cleanCache(evento){
+  if (evento == ''){
+    console.log('Cache clean (all)');
+    cache.clean(Cache.ALL);
+  }
+  else{
+    console.log('Cache clean ' + evento);
+    cache.remove(evento);
+  }
+}
+
 
 //------------------------- ROUTES ------------------------------//
 app.use(express.static(__dirname + '/public'));
 
+app.get('/cache/clear/:evento?', function(req, res){
+  cleanCache(req.params["evento"]);
+  res.send('Cache limpia' + req.params["evento"]);
+});
+
+
 app.get('/concerto/:evento', function(req, res){
-  var cach = cacheGet(req.params["evento"]);
-  if (cach == null){
+  var cached = cacheGet(req.params["evento"]);
+  if ((cached != null)&&(cached.length > 0)){
+    res.send(cached);
+  }
+  else{
     var con = new Ticketek(req.params);
     con.getAllPage(function(result){ 
       cacheSave(req.params["evento"], result, null);
       res.json(result);
     });
-  }
-  else{
-    res.send(cach);
   }
 });
 

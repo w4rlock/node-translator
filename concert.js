@@ -40,6 +40,16 @@ Ticketek.prototype = {
       done({err: 'evento no encontrado'});
     }
   }
+
+  getDetails:function(done){
+    var urleve = this.params["urlevent"];
+    if (urleve != ''){
+      done({ err: 'param url is required'});
+    }
+    else{
+      scrap(1,urleve,done);
+    }
+  }
 }
 
 //------------------- FUNCTIONS -----------------------//
@@ -89,9 +99,6 @@ function scrap(maxpagination,url,done){
         $(Ticketek.CONTAINER)
             .find(Ticketek.FILTERS.toString())
             .each(function(i,html){
-              if (hasNextPage(html)){
-                 queue.push(Ticketek.DOMAIN + $(html).attr('href'));
-              }
               if ($(html).is('img')){
                 ob={};
                 ob.img = $(html).attr('src');
@@ -99,6 +106,9 @@ function scrap(maxpagination,url,done){
               else if ($(html).is('p')){
                 ob.info = $(html).text();
                 result.push(ob);
+              }
+              else if (hasNextPage(html)){
+                 queue.push(Ticketek.DOMAIN + $(html).attr('href'));
               }
               else if ($(html).is('a')){
                 ob.band = $(html).text().trim();
@@ -109,6 +119,10 @@ function scrap(maxpagination,url,done){
      });
   }
 }
+
+//lugar = $(".node-title>a").text()
+//precio = $(".price>strong").text()
+//important = $("h2.pane-title:contains('Importante')").parent().find('p').text()
 
 function clog(ob){
   console.log(JSON.stringify(ob));
