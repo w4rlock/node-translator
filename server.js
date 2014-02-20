@@ -14,8 +14,10 @@ app.use(express.bodyParser());
 
 var cache = new Cache(new FileStorage('./cache'), 'namespace');
 
-function cacheSave(key,value,expire){
-  var oexpires = { minutes: 10};
+function cacheSave(key,value,oexpires){
+  if (!oexpires){
+    oexpires = {days: 1};
+  }
   //moment({years: 2010, months: 3, days: 5, hours: 15, minutes: 10, seconds: 3, milliseconds: 123});
   cache.save(key.toUpperCase(),value, {expire: oexpires});
 }
@@ -54,6 +56,20 @@ app.get('/concerto/:evento', function(req, res){
     var con = new Ticketek(req.params);
     con.getAllPage(function(result){ 
       cacheSave(req.params["evento"], result, null);
+      res.json(result);
+    });
+  }
+});
+
+app.get('/styles', function(req, res){
+  var cached = cacheGet('styles');
+  if ((cached != null)&&(cached.length > 0)){
+    res.send(cached);
+  }
+  else{
+    var con = new Ticketek(req.params);
+    con.getMenuStyles(function(result){ 
+      cacheSave('styles', result, {days: 5});
       res.json(result);
     });
   }
