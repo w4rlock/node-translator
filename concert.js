@@ -61,7 +61,7 @@ Ticketek.prototype = {
 
               $(".pane-shows-categories a").each(function(i,html){
                 var ob = {
-                  link: $(html).attr('href'),
+                  link: $(html).attr('href').replace(Ticketek.DOMAIN,''),
                   label:$(html).text()
                 }
                 result.push(ob);
