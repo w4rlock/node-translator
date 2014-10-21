@@ -40,4 +40,5 @@ app.get('/', function(req, res) {
     res.sendfile(__dirname + '/client.html')
 })
 
-app.listen(8080)
+var port = process.env.PORT || 8081;
+app.listen(port)
