@@ -1,0 +1,19 @@
+{
+  "name": "translator",
+  "version": "0.0.0",
+  "authors": [
+    "w4rlock <warlock.gpl@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.1"
+  }
+}

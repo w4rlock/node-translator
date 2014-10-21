@@ -1,0 +1,36 @@
+{
+  "name": "Concerts-App",
+  "version": "1.0.0",
+  "description": "Ticketeck rest api",
+  "keywords": [
+    "Node.js",
+    "application"
+  ],
+  "author": {
+    "name": "OpenShift",
+    "email": "asds",
+    "url": "http://www.openshift.com/"
+  },
+  "homepage": "http://www.openshift.com/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/openshift/origin-server"
+  },
+
+  "engines": {
+    "node": ">= 0.6.0",
+    "npm": ">= 1.0.0"
+  },
+  "dependencies": {
+    "express": "~3.4.4",
+    "cache-storage": "~2.0.0",
+    "cheerio": "~0.13.1",
+    "request": "~2.33.0",
+    "async": "~0.2.10"
+  },
+  "devDependencies": {},
+  "bundleDependencies": [],
+
+  "private": true,
+  "main": "server.js"
+}
